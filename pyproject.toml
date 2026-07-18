@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:Backend"
+
+[project]
+name = "xau-news-scraper"
+version = "1.0.0"
+description = "ForexFactory economic calendar scraper — XAUUSD news → clean JSON for AI agents"
+readme = "README.md"
+authors = [
+    {name = "REX-Finance", email = "rex@openagentic.ai"},
+]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+keywords = ["forex", "economic-calendar", "xauusd", "trading", "news-scraper", "ai-agent"]
+requires-python = ">=3.9"
+dependencies = [
+    "cloudscraper>=1.2.71",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+]
+
+[project.optional-dependencies]
+playwright = ["playwright>=1.40.0"]
+historical = ["datasets>=2.14.0", "pandas>=2.0.0"]
+all = [
+    "playwright>=1.40.0",
+    "datasets>=2.14.0",
+    "pandas>=2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/RavenPfizer/xau_news_scraper"
+Repository = "https://github.com/RavenPfizer/xau_news_scraper"
+"Bug Tracker" = "https://github.com/RavenPfizer/xau_news_scraper/issues"
+
+[project.scripts]
+xau-news = "xau_news_scraper.example:main"
+
+[tool.setuptools.packages.find]
+include = ["xau_news_scraper*"]
