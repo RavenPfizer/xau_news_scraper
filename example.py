@@ -19,10 +19,13 @@ import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Add parent to path if running directly
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
-from xau_news_scraper import XAUNewsScraper, XAUHistoricalData
+# ─── Import ────────────────────────────────────────────────────
+# Try import as installed package first, fallback to local path
+try:
+    from xau_news_scraper import XAUNewsScraper, XAUHistoricalData
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from xau_news_scraper import XAUNewsScraper, XAUHistoricalData
 
 
 def setup_logging(debug: bool = False):
